@@ -11,5 +11,7 @@ export const fetchRequests = async () => {
   applicationState.requests = serviceRequests
 }
 
-
+export const getRequests = () => {
+  return applicationState.requests.map((a) => ({ ...a }))
+};
 
