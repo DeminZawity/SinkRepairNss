@@ -1,12 +1,14 @@
-import { fetchRequests } from "./dataAccess.js"
-import { SinkRepair } from "./SinkRepair.js"
+import { fetchRequests } from "./dataAccess.js";
+import { SinkRepair } from "./SinkRepair.js";
 
-
-const mainContainer = document.querySelector("#container")
+const mainContainer = document.querySelector("#container");
 
 const render = async () => {
-    await fetchRequests()
-    mainContainer.innerHTML = SinkRepair()
-}
+  await fetchRequests();
+  mainContainer.innerHTML = SinkRepair();
+};
+mainContainer.addEventListener("stateChanged", (customEvent) => {
+  render();
+});
 
-render()
+render();
