@@ -1,3 +1,28 @@
+import { sendRequest } from "./dataAccess.js"
+const mainContainer = document.querySelector("#container")
+
+mainContainer.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "submitRequest") {
+        // Get what the user typed into the form fields
+        const userDescription = document.querySelector("input[name='serviceDescription']").value
+        const userAddress = document.querySelector("input[name='serviceAddress']").value
+        const userBudget = document.querySelector("input[name='serviceBudget']").value
+        const userDate = document.querySelector("input[name='serviceDate']").value
+
+        // Make an object out of the user input
+        const dataToSendToAPI = {
+            description: userDescription,
+            address: userAddress,
+            budget: userBudget,
+            neededBy: userDate
+        }
+
+        // Send the data to the API for permanent storage
+        sendRequest(dataToSendToAPI)
+    }
+})
+
+
 export const ServiceForm = () => {
     let html = `
         <div class="field">
@@ -13,7 +38,7 @@ export const ServiceForm = () => {
             <input type="number" name="serviceBudget" class="input" />
         </div>
         <div class="field">
-            <label class="label" for="serviceDate">Date needed</label>
+            <label class="label" for="serviceDate">Date Needed</label>
             <input type="date" name="serviceDate" class="input" />
         </div>
 
@@ -22,3 +47,4 @@ export const ServiceForm = () => {
 
     return html
 }
+
