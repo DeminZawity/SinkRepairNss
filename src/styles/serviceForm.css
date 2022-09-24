@@ -1,0 +1,13 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+#submitRequest {
+  background-color: rgb(93, 12, 12);
+  font-weight: 900px;
+  color: white;
+}
+.label {
+  font-size: larger;
+}
